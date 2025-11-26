@@ -39,6 +39,11 @@ app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 
+app.UseCors(policy => policy
+    .WithOrigins("http://localhost:5173", "http://localhost:3000")
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+
 app.UseAuthorization();
 
 app.MapControllers();
