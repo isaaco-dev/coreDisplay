@@ -5,3 +5,4 @@
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.csproj.CoreCompileInputs.cache
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.MvcApplicationPartsAssemblyInfo.cs
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.MvcApplicationPartsAssemblyInfo.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.sourcelink.json

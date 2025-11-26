@@ -17,3 +17,4 @@
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Infrastructure/obj/Debug/net8.0/refint/CoreDisplay.Infrastructure.dll
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Infrastructure/obj/Debug/net8.0/CoreDisplay.Infrastructure.pdb
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Infrastructure/obj/Debug/net8.0/ref/CoreDisplay.Infrastructure.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Infrastructure/obj/Debug/net8.0/CoreDisplay.Infrastructure.sourcelink.json

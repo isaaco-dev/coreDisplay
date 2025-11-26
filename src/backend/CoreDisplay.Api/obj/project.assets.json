@@ -417,7 +417,7 @@
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll": {
             "related": ".xml"
           }
         },
@@ -3325,6 +3325,7 @@
       "FluentValidation.AspNetCore >= 11.3.1",
       "Microsoft.AspNetCore.OpenApi >= 8.0.22",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.10",
+      "Microsoft.EntityFrameworkCore.Relational >= 8.0.10",
       "Serilog.AspNetCore >= 8.0.0",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
@@ -3392,6 +3393,10 @@
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[8.0.10, )"
+          },
+          "Microsoft.EntityFrameworkCore.Relational": {
             "target": "Package",
             "version": "[8.0.10, )"
           },

@@ -9,3 +9,4 @@
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/refint/CoreDisplay.Shared.dll
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/CoreDisplay.Shared.pdb
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/ref/CoreDisplay.Shared.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/CoreDisplay.Shared.sourcelink.json

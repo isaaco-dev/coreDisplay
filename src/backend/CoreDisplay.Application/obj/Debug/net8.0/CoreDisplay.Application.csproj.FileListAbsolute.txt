@@ -15,3 +15,4 @@
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/refint/CoreDisplay.Application.dll
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/CoreDisplay.Application.pdb
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/ref/CoreDisplay.Application.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/CoreDisplay.Application.sourcelink.json

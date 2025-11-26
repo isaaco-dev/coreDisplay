@@ -16,3 +16,4 @@
 /Users/Isaac/Desktop/coreDisplay/src/simulation/CoreDisplay.DeviceSim/obj/Debug/net8.0/CoreDisplay.DeviceSim.pdb
 /Users/Isaac/Desktop/coreDisplay/src/simulation/CoreDisplay.DeviceSim/obj/Debug/net8.0/CoreDisplay.DeviceSim.genruntimeconfig.cache
 /Users/Isaac/Desktop/coreDisplay/src/simulation/CoreDisplay.DeviceSim/obj/Debug/net8.0/ref/CoreDisplay.DeviceSim.dll
+/Users/Isaac/Desktop/coreDisplay/src/simulation/CoreDisplay.DeviceSim/obj/Debug/net8.0/CoreDisplay.DeviceSim.sourcelink.json

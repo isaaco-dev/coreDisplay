@@ -9,3 +9,4 @@
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/refint/CoreDisplay.Domain.dll
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/CoreDisplay.Domain.pdb
 /Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/ref/CoreDisplay.Domain.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/CoreDisplay.Domain.sourcelink.json
