@@ -1,0 +1,17 @@
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/CoreDisplay.Application.csproj.AssemblyReference.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/CoreDisplay.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/CoreDisplay.Application.AssemblyInfoInputs.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/CoreDisplay.Application.AssemblyInfo.cs
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/CoreDisplay.Application.csproj.CoreCompileInputs.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/bin/Debug/net8.0/CoreDisplay.Application.deps.json
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/bin/Debug/net8.0/CoreDisplay.Application.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/bin/Debug/net8.0/CoreDisplay.Application.pdb
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/bin/Debug/net8.0/CoreDisplay.Domain.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/bin/Debug/net8.0/CoreDisplay.Shared.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/bin/Debug/net8.0/CoreDisplay.Domain.pdb
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/bin/Debug/net8.0/CoreDisplay.Shared.pdb
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/CoreDisp.B9DE8979.Up2Date
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/CoreDisplay.Application.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/refint/CoreDisplay.Application.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/CoreDisplay.Application.pdb
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/Debug/net8.0/ref/CoreDisplay.Application.dll

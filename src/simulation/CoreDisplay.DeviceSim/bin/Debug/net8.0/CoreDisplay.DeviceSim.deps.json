@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CoreDisplay.DeviceSim/1.0.0": {
+        "dependencies": {
+          "CoreDisplay.Shared": "1.0.0"
+        },
+        "runtime": {
+          "CoreDisplay.DeviceSim.dll": {}
+        }
+      },
+      "CoreDisplay.Shared/1.0.0": {
+        "runtime": {
+          "CoreDisplay.Shared.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CoreDisplay.DeviceSim/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CoreDisplay.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

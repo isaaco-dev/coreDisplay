@@ -1,0 +1,6 @@
+@CoreDisplay.Api_HostAddress = http://localhost:5240
+
+GET {{CoreDisplay.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

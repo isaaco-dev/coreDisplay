@@ -1,0 +1,260 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Infrastructure/CoreDisplay.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/CoreDisplay.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/CoreDisplay.Application.csproj",
+        "projectName": "CoreDisplay.Application",
+        "projectPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/CoreDisplay.Application.csproj",
+        "packagesPath": "/Users/Isaac/.nuget/packages/",
+        "outputPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/Isaac/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/CoreDisplay.Domain.csproj": {
+                "projectPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/CoreDisplay.Domain.csproj"
+              },
+              "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/CoreDisplay.Shared.csproj": {
+                "projectPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/CoreDisplay.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/CoreDisplay.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/CoreDisplay.Domain.csproj",
+        "projectName": "CoreDisplay.Domain",
+        "projectPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/CoreDisplay.Domain.csproj",
+        "packagesPath": "/Users/Isaac/.nuget/packages/",
+        "outputPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/Isaac/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Infrastructure/CoreDisplay.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Infrastructure/CoreDisplay.Infrastructure.csproj",
+        "projectName": "CoreDisplay.Infrastructure",
+        "projectPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Infrastructure/CoreDisplay.Infrastructure.csproj",
+        "packagesPath": "/Users/Isaac/.nuget/packages/",
+        "outputPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/Isaac/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/CoreDisplay.Application.csproj": {
+                "projectPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/CoreDisplay.Application.csproj"
+              },
+              "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/CoreDisplay.Domain.csproj": {
+                "projectPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/CoreDisplay.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/CoreDisplay.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/CoreDisplay.Shared.csproj",
+        "projectName": "CoreDisplay.Shared",
+        "projectPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/CoreDisplay.Shared.csproj",
+        "packagesPath": "/Users/Isaac/.nuget/packages/",
+        "outputPath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/Isaac/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

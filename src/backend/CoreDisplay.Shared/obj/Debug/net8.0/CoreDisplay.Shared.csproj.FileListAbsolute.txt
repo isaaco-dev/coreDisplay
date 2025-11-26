@@ -1,0 +1,11 @@
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/bin/Debug/net8.0/CoreDisplay.Shared.deps.json
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/bin/Debug/net8.0/CoreDisplay.Shared.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/bin/Debug/net8.0/CoreDisplay.Shared.pdb
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/CoreDisplay.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/CoreDisplay.Shared.AssemblyInfoInputs.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/CoreDisplay.Shared.AssemblyInfo.cs
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/CoreDisplay.Shared.csproj.CoreCompileInputs.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/CoreDisplay.Shared.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/refint/CoreDisplay.Shared.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/CoreDisplay.Shared.pdb
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Shared/obj/Debug/net8.0/ref/CoreDisplay.Shared.dll

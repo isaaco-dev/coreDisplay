@@ -1,0 +1,11 @@
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/bin/Debug/net8.0/CoreDisplay.Domain.deps.json
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/bin/Debug/net8.0/CoreDisplay.Domain.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/bin/Debug/net8.0/CoreDisplay.Domain.pdb
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/CoreDisplay.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/CoreDisplay.Domain.AssemblyInfoInputs.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/CoreDisplay.Domain.AssemblyInfo.cs
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/CoreDisplay.Domain.csproj.CoreCompileInputs.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/CoreDisplay.Domain.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/refint/CoreDisplay.Domain.dll
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/CoreDisplay.Domain.pdb
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Domain/obj/Debug/net8.0/ref/CoreDisplay.Domain.dll

@@ -1,0 +1,7 @@
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.csproj.AssemblyReference.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.AssemblyInfoInputs.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.AssemblyInfo.cs
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.csproj.CoreCompileInputs.cache
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.MvcApplicationPartsAssemblyInfo.cs
+/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Api/obj/Debug/net8.0/CoreDisplay.Api.MvcApplicationPartsAssemblyInfo.cache
