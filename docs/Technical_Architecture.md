@@ -1,95 +1,89 @@
-# Technical Architecture - CoreDisplay Fleet Platform
+# Architettura Tecnica - CoreDisplay Fleet Platform
 
-This document provides a deep technical dive into the CoreDisplay platform, intended for senior developers and architects.
+Questo documento fornisce un'analisi tecnica approfondita della piattaforma CoreDisplay, destinata a Senior Developers e System Architects.
 
-## 1. Database Schema (PostgreSQL)
+## 1. Schema Database (PostgreSQL)
 
-The system uses **Entity Framework Core (Code First)** to map the following domain entities.
+Il sistema utilizza **Entity Framework Core (Code First)**. Di seguito i dettagli critici delle entità.
 
-### Core Entities
+### Entità Core
 
-| Entity | Description | Key Fields | Relationships |
-| :--- | :--- | :--- | :--- |
-| **Tenant** | Multi-tenancy root | `Id` (UUID), `ApiKey` (Encrypted) | 1:N Devices, 1:N MediaAssets |
-| **Device** | Physical Player | `HardwareId` (Unique), `Status` (Enum), `Configuration` (JSONB) | N:1 Tenant, 1:N TelemetryLogs |
-| **MediaAsset** | Content Files | `StoragePath`, `Hash` (SHA256), `MimeType` | N:1 Tenant |
-| **Playlist** | Ordered Content | `Items` (JSONB - Sequence of Media IDs) | N:1 Tenant, 1:N Schedules |
-| **Schedule** | Playback Rules | `CronExpression`, `StartDate`, `EndDate` | N:1 Device OR Group, N:1 Playlist |
-| **TelemetryLog** | Time-series Data | `Timestamp`, `CpuUsage`, `RamUsage` | N:1 Device |
+| Entità | Chiave Primaria | Campi Chiave | Relazioni | Indici Critici |
+| :--- | :--- | :--- | :--- | :--- |
+| **Tenant** | `Id` (UUID) | `ApiKey` (Encrypted) | 1:N Devices | `IX_Tenants_ApiKey` |
+| **Device** | `Id` (UUID) | `HardwareId`, `Status`, `Configuration` (JSONB) | N:1 Tenant | `IX_Devices_HardwareId` (Unique), `IX_Devices_TenantId` |
+| **TelemetryLog** | `Id` (Long) | `Timestamp`, `CpuUsage`, `RamUsage` | N:1 Device | `IX_TelemetryLogs_DeviceId_Timestamp` (Time-series optimization) |
+| **MediaAsset** | `Id` (UUID) | `Hash` (SHA256), `StoragePath` | N:1 Tenant | `IX_MediaAssets_Hash` |
 
-> **Note**: `TelemetryLog` is designed to be migrated to a TimescaleDB hypertable in the Enterprise phase for high-cardinality performance.
+> **Nota**: `TelemetryLog` è progettata per essere migrata su una iper-tabella TimescaleDB nella fase Enterprise per gestire l'alta cardinalità.
 
 ---
 
-## 2. API Specification (REST)
+## 2. Architettura Concettuale & Flusso Dati
 
-The Backend exposes a RESTful API documented via OpenAPI (Swagger).
+La piattaforma segue un'architettura a microservizi (o modulare monolitica per l'MVP) con una chiara separazione delle responsabilità.
 
-### Base URL
-`http://localhost:5000/api/v1`
+### Flusso: Telemetria (Device -> Cloud)
+1.  **Device Agent**: Raccoglie metriche (CPU, RAM) ogni 30s.
+2.  **API (Heartbeat)**: Riceve il payload JSON autenticato via JWT.
+3.  **Backend**: Valida il token, aggiorna lo stato `LastSeen` del Device (Redis/DB) e persiste il log in `TelemetryLogs`.
 
-### Key Endpoints
-
-#### Device Management
-*   **POST** `/devices/register`
-    *   **Purpose**: Initial handshake and provisioning.
-    *   **Request DTO**:
-        ```json
-        {
-          "hardwareId": "string",
-          "name": "string",
-          "os": "string",
-          "appVersion": "string"
-        }
-        ```
-    *   **Response**: `{ "deviceId": "guid" }`
-
-*   **POST** `/devices/heartbeat`
-    *   **Purpose**: Periodic status update (every 30s).
-    *   **Request DTO**:
-        ```json
-        {
-          "hardwareId": "string",
-          "timestamp": "ISO8601",
-          "cpuUsage": float,
-          "ramUsage": float,
-          "temperature": float,
-          "storageFree": long
-        }
-        ```
-
-#### Content Management (Planned)
-*   **POST** `/media/upload`: Multipart/form-data upload to Object Storage (MinIO/S3).
-*   **GET** `/playlists`: Retrieve playlists for a tenant.
+### Flusso: Comandi (Cloud -> Device)
+1.  **Admin Panel**: L'utente clicca "Reboot".
+2.  **API**: Riceve la richiesta POST, valida i permessi Admin.
+3.  **Command Queue**: Il comando viene accodato (In-Memory per MVP, RabbitMQ per Prod).
+4.  **Device Agent**: Esegue il polling (o riceve via MQTT) del comando, lo esegue localmente e (opzionale) invia una conferma.
 
 ---
 
-## 3. Real-time Strategy
+## 3. Logica Device Agent (Ciclo di Vita)
 
-CoreDisplay uses a hybrid approach for real-time communication:
+Il client Windows (WPF/Service) segue una macchina a stati rigorosa per garantire resilienza.
 
-### Telemetry Ingestion (Device -> Cloud)
-*   **Protocol**: HTTP (MVP) -> MQTT over TLS (Enterprise).
-*   **Flow**: Devices publish telemetry to a message broker (RabbitMQ/Azure Service Bus). A background worker consumes these messages and persists them to the DB (bulk insert).
-*   **Topic**: `core/devices/{deviceId}/telemetry`
+```mermaid
+graph TD
+    A[Start] --> B{Token Valido?}
+    B -- No --> C[Registrazione (Handshake)]
+    C --> D[Salva Token Sicuro (DPAPI)]
+    D --> E[Loop Principale]
+    B -- Si --> E
+    E --> F[Raccolta Telemetria]
+    F --> G[Invio Heartbeat (API)]
+    G --> H{Comandi Pendenti?}
+    H -- Si --> I[Esegui Comando]
+    I --> E
+    H -- No --> E
+```
 
-### Command & Control (Cloud -> Device)
-*   **Protocol**: WebSocket / MQTT Sub.
-*   **Flow**: The Admin Panel sends a command (e.g., "Reboot") via API. The API publishes a message to the device's specific command topic.
-*   **Topic**: `core/devices/{deviceId}/commands`
+1.  **Handshake**: All'avvio, se non ha un token, chiama `/register` con il suo `HardwareId`.
+2.  **Secure Storage**: Il token JWT ricevuto viene cifrato con DPAPI e salvato localmente.
+3.  **Heartbeat Loop**: Ogni 30s invia lo stato. Se riceve 401 Unauthorized, tenta un refresh (nuova registrazione).
 
 ---
 
-## 4. Code Conventions
+## 4. Variabili d'Ambiente (Configurazione)
 
-### Backend (.NET 8)
-*   **Architecture**: Clean Architecture (Domain, Application, Infrastructure, Api).
-*   **Pattern**: CQRS (Command Query Responsibility Segregation) using MediatR (planned).
-*   **Validation**: FluentValidation for all incoming DTOs.
-*   **Logging**: Serilog (Structured Logging).
-*   **Naming**: PascalCase for public members, _camelCase for private fields.
+Tutti i servizi sono configurati tramite Variabili d'Ambiente, iniettate da Azure Container Apps o Docker Compose.
 
-### Frontend (React)
-*   **State Management**: TanStack Query (React Query) for server state.
-*   **Styling**: TailwindCSS.
-*   **Types**: TypeScript interfaces must strictly mirror Backend DTOs.
+### Backend (`app-backend`)
+
+| Variabile | Descrizione | Esempio / Valore Default |
+| :--- | :--- | :--- |
+| `ConnectionStrings__DefaultConnection` | Stringa connessione PostgreSQL | `Host=db;Database=core;...` |
+| `Redis__ConnectionString` | Endpoint Redis | `redis:6379` |
+| `Jwt__Key` | Chiave segreta per firma Token | *(Secret)* |
+| `ASPNETCORE_ENVIRONMENT` | Ambiente di esecuzione | `Development` / `Production` |
+
+### Frontend (`app-frontend`)
+
+| Variabile | Descrizione | Esempio |
+| :--- | :--- | :--- |
+| `VITE_API_URL` | URL pubblico del Backend | `https://api.coredisplay.com` |
+
+---
+
+## 5. Convenzioni di Codice
+
+*   **Backend**: Clean Architecture. I Controller sono sottili, la logica di business risiede in `Application`.
+*   **Validazione**: FluentValidation è obbligatorio per ogni DTO di input.
+*   **Sicurezza**: Mai committare segreti. Usare `UserSecrets` in locale e `KeyVault`/`EnvVars` in produzione.

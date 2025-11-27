@@ -36,6 +36,42 @@ resource "azurerm_subnet" "snet_vm" {
   address_prefixes     = ["10.0.2.0/24"]
 }
 
+# App Subnet NSG
+resource "azurerm_network_security_group" "nsg_app" {
+  name                = "nsg-app"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+
+  security_rule {
+    name                       = "AllowHTTPS"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "443"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+  
+  security_rule {
+    name                       = "AllowHTTP"
+    priority                   = 110
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+}
+
+resource "azurerm_subnet_network_security_group_association" "nsg_app_assoc" {
+  subnet_id                 = azurerm_subnet.snet_app.id
+  network_security_group_id = azurerm_network_security_group.nsg_app.id
+}
+
 # PostgreSQL Flexible Server
 resource "azurerm_postgresql_flexible_server" "postgres" {
   name                   = "db-coredisplay-${random_string.suffix.result}"
@@ -47,6 +83,10 @@ resource "azurerm_postgresql_flexible_server" "postgres" {
   storage_mb             = 32768
   sku_name               = "B_Standard_B1ms"
   zone                   = "1"
+  
+  # Security: In a real prod environment, use delegated_subnet_id for VNet Integration
+  # delegated_subnet_id = azurerm_subnet.snet_app.id
+  # private_dns_zone_id = ...
 }
 
 resource "azurerm_postgresql_flexible_server_database" "db" {

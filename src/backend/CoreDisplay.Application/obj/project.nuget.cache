@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "BaTrENStLhI=",
+  "dgSpecHash": "9VFonmZUS8M=",
   "success": true,
   "projectFilePath": "/Users/Isaac/Desktop/coreDisplay/src/backend/CoreDisplay.Application/CoreDisplay.Application.csproj",
   "expectedPackageFiles": [
+    "/Users/Isaac/.nuget/packages/fluentvalidation/12.1.0/fluentvalidation.12.1.0.nupkg.sha512",
+    "/Users/Isaac/.nuget/packages/fluentvalidation.dependencyinjectionextensions/12.1.0/fluentvalidation.dependencyinjectionextensions.12.1.0.nupkg.sha512",
     "/Users/Isaac/.nuget/packages/microsoft.entityframeworkcore/8.0.10/microsoft.entityframeworkcore.8.0.10.nupkg.sha512",
     "/Users/Isaac/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.10/microsoft.entityframeworkcore.abstractions.8.0.10.nupkg.sha512",
     "/Users/Isaac/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.10/microsoft.entityframeworkcore.analyzers.8.0.10.nupkg.sha512",

@@ -1,87 +1,83 @@
-# Deployment Guide - CoreDisplay Fleet Platform
+# Guida al Deployment - CoreDisplay Fleet Platform
 
-This guide is intended for DevOps Engineers and System Administrators. It covers both local development setup and production deployment on Azure using Terraform.
+Questa guida tecnica è destinata agli ingegneri DevOps e System Administrators. Copre il deployment locale (Docker) e cloud (Azure Terraform).
 
-## 1. Local Development (Docker Compose)
+## 1. Sviluppo Locale (Docker Compose) 🐳
 
-The fastest way to spin up the environment for testing or development.
+Il modo più rapido per avviare l'intero stack per test e sviluppo.
 
-### Prerequisites
-*   Docker Desktop
-*   .NET 8 SDK (optional, for code edits)
+### Prerequisiti
+*   **Docker Desktop** (o Engine + Compose)
+*   **.NET 8 SDK** (Opzionale, per modifiche al codice)
 
-### Steps
-1.  **Clone the Repo**:
+### Istruzioni
+1.  **Clona il Repository**:
     ```bash
     git clone <repo-url>
     cd coredisplay
     ```
-2.  **Start Services**:
+2.  **Avvia lo Stack**:
     ```bash
     docker-compose up -d --build
     ```
-3.  **Verify**:
-    *   Admin Panel: `http://localhost:3000`
-    *   API: `http://localhost:5000`
-    *   DB/Redis/RabbitMQ: Running in background containers.
+3.  **Verifica Servizi**:
+    *   **Admin Panel**: [http://localhost:3000](http://localhost:3000)
+    *   **API**: [http://localhost:5000](http://localhost:5000)
+    *   **Postgres/Redis**: In esecuzione nei container.
 
 ---
 
-## 2. Azure Production Deployment (Terraform)
+## 2. Produzione su Azure (Terraform) ☁️
 
-We use **Terraform** to provision a complete, production-ready environment on Azure.
+Utilizziamo **Terraform** per un provisioning Infrastructure-as-Code (IaC) completo e sicuro.
 
-### Architecture
-*   **Compute**: Azure Container Apps (Serverless Containers) for Backend, Frontend, and RabbitMQ.
-*   **Database**: Azure Database for PostgreSQL (Flexible Server).
+### Architettura Cloud
+*   **Compute**: Azure Container Apps (Serverless) per Backend, Frontend e RabbitMQ.
+*   **Database**: Azure Database for PostgreSQL (Flexible Server) - Isolato.
 *   **Cache**: Azure Cache for Redis.
 *   **Storage**: Azure Storage Account.
-*   **Test Client**: A Windows 11 VM for validating the Kiosk app.
+*   **Client Test**: VM Windows 11 dedicata.
 
-### Prerequisites
-*   **Azure CLI**: `az login` (Must be authenticated).
-*   **Terraform**: Installed (v1.0+).
+### Prerequisiti
+*   **Azure CLI**: `az login` (Autenticato).
+*   **Terraform**: v1.0+.
 
-### Deployment Steps
+### Procedura di Deployment
 
-1.  **Navigate to IaC Directory**:
+1.  **Inizializzazione**:
     ```bash
     cd iac/azure/terraform
-    ```
-
-2.  **Initialize Terraform**:
-    Downloads the Azure provider plugins.
-    ```bash
     terraform init
     ```
 
-3.  **Review Plan**:
-    See what resources will be created.
+2.  **Pianificazione**:
+    Verifica le risorse che verranno create.
     ```bash
     terraform plan -out=tfplan
     ```
 
-4.  **Apply Infrastructure**:
-    Provision the resources (this may take 15-20 mins).
+3.  **Applicazione**:
+    Provisioning delle risorse (Tempo stimato: 15-20 min).
     ```bash
     terraform apply tfplan
     ```
 
-### Post-Deployment
+### Post-Deployment & Accesso
 
-After a successful apply, Terraform will output critical connection details. You can retrieve them anytime with:
+Al termine, Terraform restituirà gli output critici. Puoi recuperarli in qualsiasi momento con:
 ```bash
 terraform output
 ```
 
-**Key Outputs:**
-*   `backend_url`: The public HTTPS URL of your API (e.g., `https://app-backend.polartree-xyz.eastus.azurecontainerapps.io`).
-*   `frontend_url`: The public URL of the Admin Panel.
-*   `vm_public_ip`: IP address to RDP into the Windows Test VM.
-*   `vm_username` / `vm_password`: Credentials for the VM.
+| Output | Descrizione |
+| :--- | :--- |
+| `backend_url` | URL pubblico API HTTPS (es. `https://app-backend...`) |
+| `frontend_url` | URL pubblico Admin Panel |
+| `vm_public_ip` | IP per accesso RDP alla VM di test |
+| `vm_username` | Credenziali Admin VM |
 
-### Connecting the Windows Client
-1.  RDP into the `vm-client` using the output credentials.
-2.  Deploy the `CoreDisplay.Windows` application to the VM.
-3.  Update the `appsettings.json` or config in the client to point to the `backend_url`.
-4.  Run the client. It should appear as "Online" in the Admin Panel (`frontend_url`).
+### Configurazione VM Client
+1.  Connettiti via RDP alla `vm-client` usando le credenziali fornite.
+2.  Installa il client `CoreDisplay.Windows`.
+3.  Modifica `appsettings.json` puntando al `backend_url`.
+4.  Avvia l'applicazione. Dovrebbe apparire "Online" nella Dashboard.

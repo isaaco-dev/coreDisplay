@@ -18,14 +18,22 @@ export interface Device {
     configuration: string;
 }
 
-export const fetchDevices = async (): Promise<Device[]> => {
-    // Mocking response for now as we don't have a list endpoint yet, 
-    // or assuming one will be created.
-    // In a real scenario, we would call: const response = await api.get('/devices');
-    // return response.data;
+export interface DeviceFilters {
+    status?: string;
+    os?: string;
+}
 
-    // Returning empty array or mock data if endpoint missing
-    return [];
+export const fetchDevices = async (filters?: DeviceFilters): Promise<Device[]> => {
+    const params = new URLSearchParams();
+    if (filters?.status && filters.status !== 'All') params.append('status', filters.status);
+    if (filters?.os && filters.os !== 'All') params.append('os', filters.os);
+
+    const response = await api.get('/devices', { params });
+    return response.data;
+};
+
+export const sendCommand = async (deviceId: string, type: string, payload?: string) => {
+    return api.post(`/devices/${deviceId}/command`, { type, payload });
 };
 
 export default api;
