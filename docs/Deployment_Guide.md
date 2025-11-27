@@ -1,83 +1,63 @@
 # Guida al Deployment - CoreDisplay Fleet Platform
 
-Questa guida tecnica è destinata agli ingegneri DevOps e System Administrators. Copre il deployment locale (Docker) e cloud (Azure Terraform).
-
-## 1. Sviluppo Locale (Docker Compose) 🐳
-
-Il modo più rapido per avviare l'intero stack per test e sviluppo.
-
-### Prerequisiti
-*   **Docker Desktop** (o Engine + Compose)
-*   **.NET 8 SDK** (Opzionale, per modifiche al codice)
-
-### Istruzioni
-1.  **Clona il Repository**:
-    ```bash
-    git clone <repo-url>
-    cd coredisplay
-    ```
-2.  **Avvia lo Stack**:
-    ```bash
-    docker-compose up -d --build
-    ```
-3.  **Verifica Servizi**:
-    *   **Admin Panel**: [http://localhost:3000](http://localhost:3000)
-    *   **API**: [http://localhost:5000](http://localhost:5000)
-    *   **Postgres/Redis**: In esecuzione nei container.
+Questa guida tecnica copre il deployment su **Locale (Docker)** e **Multi-Cloud (Azure, AWS, GCP)** tramite Terraform.
 
 ---
 
-## 2. Produzione su Azure (Terraform) ☁️
+## 1. Sviluppo Locale (Docker Compose) 🐳
 
-Utilizziamo **Terraform** per un provisioning Infrastructure-as-Code (IaC) completo e sicuro.
+Ideale per sviluppo e test rapidi.
 
-### Architettura Cloud
-*   **Compute**: Azure Container Apps (Serverless) per Backend, Frontend e RabbitMQ.
-*   **Database**: Azure Database for PostgreSQL (Flexible Server) - Isolato.
-*   **Cache**: Azure Cache for Redis.
-*   **Storage**: Azure Storage Account.
-*   **Client Test**: VM Windows 11 dedicata.
-
-### Prerequisiti
-*   **Azure CLI**: `az login` (Autenticato).
-*   **Terraform**: v1.0+.
-
-### Procedura di Deployment
-
-1.  **Inizializzazione**:
-    ```bash
-    cd iac/azure/terraform
-    terraform init
-    ```
-
-2.  **Pianificazione**:
-    Verifica le risorse che verranno create.
-    ```bash
-    terraform plan -out=tfplan
-    ```
-
-3.  **Applicazione**:
-    Provisioning delle risorse (Tempo stimato: 15-20 min).
-    ```bash
-    terraform apply tfplan
-    ```
-
-### Post-Deployment & Accesso
-
-Al termine, Terraform restituirà gli output critici. Puoi recuperarli in qualsiasi momento con:
+### Comandi
 ```bash
-terraform output
+# Avvio Stack
+docker-compose up -d --build
+
+# Stop Stack
+docker-compose down
 ```
 
-| Output | Descrizione |
-| :--- | :--- |
-| `backend_url` | URL pubblico API HTTPS (es. `https://app-backend...`) |
-| `frontend_url` | URL pubblico Admin Panel |
-| `vm_public_ip` | IP per accesso RDP alla VM di test |
-| `vm_username` | Credenziali Admin VM |
+### Accesso
+*   **Admin Panel**: [http://localhost:3000](http://localhost:3000)
+*   **API**: [http://localhost:5000](http://localhost:5000)
 
-### Configurazione VM Client
-1.  Connettiti via RDP alla `vm-client` usando le credenziali fornite.
-2.  Installa il client `CoreDisplay.Windows`.
-3.  Modifica `appsettings.json` puntando al `backend_url`.
-4.  Avvia l'applicazione. Dovrebbe apparire "Online" nella Dashboard.
+---
+
+## 2. Cloud Deployment (Infrastructure as Code) ☁️
+
+Scegli il tuo Cloud Provider preferito. Ogni cartella `iac` contiene configurazioni Terraform pronte all'uso.
+
+### A. Microsoft Azure (Consigliato)
+
+Stack: **Container Apps, PostgreSQL Flexible, Redis, Storage Account**.
+
+1.  **Init**: `cd iac/azure/terraform && terraform init`
+2.  **Apply**: `terraform apply`
+3.  **Output**: Recupera `backend_url` e credenziali VM Windows.
+
+### B. Amazon Web Services (AWS)
+
+Stack: **ECS Fargate, RDS PostgreSQL, ElastiCache Redis, S3**.
+
+1.  **Prerequisiti**: AWS CLI configurata (`aws configure`).
+2.  **Init**: `cd iac/aws/terraform && terraform init`
+3.  **Apply**: `terraform apply`
+    *   *Nota*: Richiede la creazione manuale di un `terraform.tfvars` con `db_password`.
+
+### C. Google Cloud Platform (GCP)
+
+Stack: **Cloud Run, Cloud SQL, Cloud Storage**.
+
+1.  **Prerequisiti**: gcloud CLI autenticata e progetto creato.
+2.  **Init**: `cd iac/gcp/terraform && terraform init`
+3.  **Apply**: `terraform apply -var="project_id=IL_TUO_PROJECT_ID"`
+
+---
+
+## 3. Configurazione Client Windows
+
+Indipendentemente dal cloud, la procedura per il client è identica:
+
+1.  **Ottieni l'URL Backend**: Dall'output di Terraform (`backend_url` o `rds_endpoint` per DB diretti).
+2.  **Configura**: Aggiorna `appsettings.json` nel client Windows.
+3.  **Avvia**: Esegui l'eseguibile `CoreDisplay.Windows.exe`.
